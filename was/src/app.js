@@ -9,9 +9,15 @@ const express = require("express") ,
     http = require("http").createServer(app),
     port = 5000
 
-const router = require("./script/view/index")
+const bodyParser = require("body-parser")
+
+const router = require("./script/controller/index")
 
 app.use(router)
+
+app.use(bodyParser.json())
+
+app.use(bodyParser.urlencoded({extended : true}))
 
 http.listen(port , () =>{
     console.log(`START WEB SERVICE PORT => ${port}`)

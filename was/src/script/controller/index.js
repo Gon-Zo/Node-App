@@ -4,9 +4,9 @@
  * Github : https://github.com/Gon-Zo
  */
 
-const helloView = require("./hello")
+const helloView = require("./hello.controller")
 
-const userView = require("./user")
+const userView = require("./user.controller")
 
 const router = require("express").Router()
 
