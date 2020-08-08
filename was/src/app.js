@@ -9,13 +9,9 @@ const express = require("express") ,
     http = require("http").createServer(app),
     port = 5000
 
-const helloRouter = require("./script/view/hello")
+const router = require("./script/view/index")
 
-const userRouter = require("./script/view/user")
-
-app.use("/hello" , helloRouter)
-
-app.use("/user" , userRouter)
+app.use(router)
 
 http.listen(port , () =>{
     console.log(`START WEB SERVICE PORT => ${port}`)
