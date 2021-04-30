@@ -2,7 +2,7 @@
 <h1 align="center">Node Express Sample Project</h1>
 
 <p align="center">
- <img src='https://user-images.githubusercontent.com/53357210/116710765-16dfe200-aa0d-11eb-9ea4-90add217fa92.png'/>
+ <img src='https://user-images.githubusercontent.com/53357210/116710765-16dfe200-aa0d-11eb-9ea4-90add217fa92.png' width="500"/>
 </p>
 
 <h5 align="center">
