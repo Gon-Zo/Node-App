@@ -31,6 +31,10 @@
 npm install 
 ```
 
+```bash
+npm start 
+```
+
 <h5>
 Docker로 이미지 받는 법
 </h5>
