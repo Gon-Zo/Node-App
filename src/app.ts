@@ -3,7 +3,7 @@ import {v4 as uuid} from 'uuid';
 const showBanner = require('node-banner');
 
 const createByBanner = async (port: number) => {
-    const label = `🔥 Typescript & Node Express \n GitHub: https://github.com/Gon-Zo/Node_Application \n Host: http://localhost:${port} \n Developer: @Gon-Zo`
+    const label = `🔥 Typescript & Node Express \n GitHub: https://github.com/Gon-Zo/Node-App \n Host: http://localhost:${port} \n Developer: @Gon-Zo`
     await showBanner('Node Express', label);
 }
 
