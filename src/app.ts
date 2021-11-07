@@ -1,22 +1,9 @@
 import express from "express";
-import {v4 as uuid} from 'uuid';
-
-const showBanner = require('node-banner');
-
-const mysql = require("mysql");
-
-const createByBanner = async (port: number) => {
-    const label = `🔥 Typescript & Node Express \n GitHub: https://github.com/Gon-Zo/Node-App \n Host: http://localhost:${port} \n Writer: @Gon-Zo`
-    await showBanner('Node Express', label);
-}
-
-// const database = mysql.createConnection({
-//     host: '',
-//     user: '',
-//     password: '',
-//     port: '',
-//     database: ''
-// })
+import { Container } from "typedi";
+// import { createDatabaseConnection } from "./config/databse.configuration";
+import { createByBanner } from "./config/app.configuration";
+import { useContainer as routingUseContainer, useExpressServer } from "routing-controllers";
+import { UserResource } from "./resource/user.resource";
 
 class App {
 
@@ -24,27 +11,39 @@ class App {
 
     constructor() {
         this.application = express();
-        // this.setDataBase()
+        this.setExpress()
+        // this.setDatabase()
     }
 
-    // public async setDataBase(): Promise<void> {
+    private setExpress(): void {
+        try {
+            routingUseContainer(Container);
+            useExpressServer(this.application, {
+                routePrefix: "/api",
+                controllers: [UserResource],
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    // public async setDatabase(): Promise<void> {
     //     try {
-    //         await database.connect();
-    //     } catch (e) {
-    //         console.log(e)
+    //         await createDatabaseConnection();
+    //     } catch (error) {
+    //         throw error;
     //     }
-    // };
+    // }
 
 }
 
-const app = new App().application;
-const id: string = uuid();
-const port = 4000
+try {
 
+    const app = new App().application;
+    const port = 4000
 
-app.get("/", (req: express.Request, res: express.Response) => {
-    res.send(`start =======>>>>>>> ${id}`);
+    app.listen(port, () => createByBanner(port));
 
-})
-
-app.listen(port, () => createByBanner(port));
+} catch (e) {
+    console.log(e)
+}
