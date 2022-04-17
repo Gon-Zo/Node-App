@@ -3,7 +3,7 @@ import { User } from "../domain/User";
 
 
 @EntityRepository(User)
-export class UserRepository {
+export class UserRepostiory {
 
     findAll() {
         return createQueryBuilder()

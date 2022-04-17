@@ -1,9 +1,9 @@
 import express from "express";
 import { Container } from "typedi";
 // import { createDatabaseConnection } from "./config/databse.configuration";
-import { createByBanner } from "./config/app.configuration";
+import { createByBanner } from "./config/AppConfiguration";
 import { useContainer as routingUseContainer, useExpressServer } from "routing-controllers";
-import { UserResource } from "./resource/user.resource";
+import { UserResource } from "./web/UserResource";
 
 class App {
 

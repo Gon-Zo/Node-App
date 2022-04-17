@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 import { Get, HttpCode, JsonController } from "routing-controllers";
-import { UserService } from "../service/user.service";
+import { UserSerivce } from "../service/UserSerivce";
 
 @JsonController("/user")
 export class UserResource {
 
-    constructor(private userService: UserService) {
+    constructor(private userService: UserSerivce) {
     }
 
     @HttpCode(200)
