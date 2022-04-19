@@ -1,49 +1,46 @@
 import express from "express";
 import { Container } from "typedi";
-// import { createDatabaseConnection } from "./config/databse.configuration";
-import { createByBanner } from "./config/AppConfiguration";
 import { useContainer as routingUseContainer, useExpressServer } from "routing-controllers";
+import { StartResource } from "./web/StartResource";
+import { createDatabaseConnection } from "./config/DataBaseConfiguration";
 import { UserResource } from "./web/UserResource";
 
-class App {
+export class App {
 
-    public application: express.Application;
+    private readonly server: express.Application;
 
     constructor() {
-        this.application = express();
+        this.server = express();
         this.setExpress()
-        // this.setDatabase()
+        this.setDatabase()
     }
 
     private setExpress(): void {
         try {
             routingUseContainer(Container);
-            useExpressServer(this.application, {
+
+            // createExpressServer({
+            //     routePrefix: "/api",
+            //     controllers: [StartResource, UserResource],
+            // }).listen(4000);
+
+            useExpressServer(this.server, {
                 routePrefix: "/api",
-                controllers: [UserResource],
+                controllers: [StartResource, UserResource],
             });
+
         } catch (error) {
             console.log(error)
         }
     }
 
-    // public async setDatabase(): Promise<void> {
-    //     try {
-    //         await createDatabaseConnection();
-    //     } catch (error) {
-    //         throw error;
-    //     }
-    // }
+    private async setDatabase(): Promise<void> {
+        await createDatabaseConnection()
+            .catch(error => console.log(`connection error => ${error}`));
+    }
 
+    getServer(): express.Application {
+        return this.server
+    }
 }
 
-try {
-
-    const app = new App().application;
-    const port = 4000
-
-    app.listen(port, () => createByBanner(port));
-
-} catch (e) {
-    console.log(e)
-}
