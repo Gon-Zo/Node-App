@@ -1,6 +1,7 @@
 // import { App } from "./App";
 
 import { App } from "./App";
+import { banner } from "./config/AppConfiguration";
 
 try {
 
@@ -8,8 +9,7 @@ try {
 
     const port = 4000
 
-    app.listen(port, () =>
-        console.log(`start to server port:${port}`));
+    app.listen(port, () => banner(port));
 
     // new App().getServer();
 
