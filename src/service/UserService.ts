@@ -11,7 +11,7 @@ export class UserService implements CrudService<User> {
         @InjectRepository() private readonly userRepository: UserRepository) {
     }
 
-    getAll(): Promise<User[]> {
+    async getAll(): Promise<User[]> {
         return this.userRepository.findAll()
     }
 
@@ -20,9 +20,13 @@ export class UserService implements CrudService<User> {
         return null
     }
 
-    removeOne(id: number): void {
+    removed(id: number): void {
     }
 
-    update(id: number, any: any): void {
+    updated(id: number, any: any): void {
+    }
+
+    async created(any: any): Promise<User> {
+        return this.userRepository.save(any)
     }
 }
