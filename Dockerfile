@@ -12,4 +12,4 @@ COPY . /src
 
 WORKDIR /src
 
-CMD npm start
+CMD npm run local
