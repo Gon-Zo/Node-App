@@ -1,4 +1,4 @@
-import { Get, HttpCode, JsonController } from "routing-controllers";
+import { Get, JsonController } from "routing-controllers";
 import { Service } from "typedi";
 
 
@@ -7,7 +7,6 @@ import { Service } from "typedi";
 export class StartResource {
 
     @Get("")
-    @HttpCode(200)
     public async start() {
         return "start";
     }

@@ -2,14 +2,12 @@ import { ConnectionOptions, createConnection, useContainer } from "typeorm";
 import Container from 'typedi';
 import * as path from "path"
 import { User } from "../domain/User";
-import { DbConnection } from "./DbConnection";
+import { Connection } from "./Connection";
+import AbstractDbConnection from "./AbstractDbConnection";
 
 const root: string = path.resolve(__dirname, "..")
 
-export default class SqliteConnection implements DbConnection {
-
-    constructor() {
-    }
+export default class SqliteConnection extends AbstractDbConnection {
 
     async connection(): Promise<void> {
 

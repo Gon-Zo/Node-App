@@ -1,3 +1,3 @@
-export interface DbConnection {
+export interface Connection {
     connection: () => Promise<void>
 }

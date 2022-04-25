@@ -6,7 +6,8 @@
   "scripts": {
     "debug": "nodemon --exec ./node_modules/.bin/ts-node src/App.ts",
     "local": "ts-node-dev --respawn --transpile-only src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "debug2": "ts-node-debug --inspect src/index.ts"
   },
   "repository": {
     "type": "git",

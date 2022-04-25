@@ -3,16 +3,16 @@ import { Container } from "typedi";
 import { useContainer as routingUseContainer, useExpressServer } from "routing-controllers";
 import { StartResource } from "./web/StartResource";
 import { UserResource } from "./web/UserResource";
-import { DbConnection } from "./config/DbConnection";
 import ArtistsResource from "./web/ArtistsResource";
+import AbstractDbConnection from "./config/AbstractDbConnection";
 
 export class App {
 
     private readonly server: express.Application;
 
-    private readonly dbConnection: DbConnection
+    private readonly dbConnection: AbstractDbConnection
 
-    constructor(dbConnection: DbConnection) {
+    constructor(dbConnection: AbstractDbConnection) {
         this.server = express();
         this.dbConnection = dbConnection
         this.setExpress()
@@ -21,6 +21,7 @@ export class App {
 
     private setExpress(): void {
         try {
+
             routingUseContainer(Container);
 
             useExpressServer(this.server, {
