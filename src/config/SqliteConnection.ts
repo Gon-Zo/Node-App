@@ -1,8 +1,7 @@
-import { ConnectionOptions, createConnection, useContainer } from "typeorm";
+import {ConnectionOptions, createConnection, useContainer} from "typeorm";
 import Container from 'typedi';
 import * as path from "path"
-import { User } from "../domain/User";
-import { Connection } from "./Connection";
+import {User} from "../domain/User";
 import AbstractDbConnection from "./AbstractDbConnection";
 
 const root: string = path.resolve(__dirname, "..")
@@ -20,6 +19,7 @@ export default class SqliteConnection extends AbstractDbConnection {
             ],
             // table naming setting
             // namingStrategy: new SnakeNamingStrategy(),
+            // @ts-ignore
             cli: {
                 // table synchronize
                 migrationsDir: `${root}/db`

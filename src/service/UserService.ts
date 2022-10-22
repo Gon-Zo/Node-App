@@ -1,18 +1,20 @@
-import { Service } from "typedi";
-import { UserRepository } from "../repository/UserRepository";
-import { InjectRepository } from "typeorm-typedi-extensions";
+import {Service} from "typedi";
 import CrudService from "./CrudService";
-import { User } from "../domain/User";
+import {User} from "../domain/User";
 
 @Service("userService")
 export class UserService implements CrudService<User> {
 
+        // @InjectRepository() private readonly userRepository: UserRepository) {
     constructor(
-        @InjectRepository() private readonly userRepository: UserRepository) {
+    ){
     }
 
     async getAll(): Promise<User[]> {
-        return this.userRepository.findAll()
+        // return this.userRepository.findAll()
+
+        // @ts-ignore
+        return null
     }
 
     getOne(id: number): Promise<User> {
@@ -27,6 +29,8 @@ export class UserService implements CrudService<User> {
     }
 
     async created(any: any): Promise<User> {
-        return this.userRepository.save(any)
+        // return this.userRepository.save(any)
+        // @ts-ignore
+        return null
     }
 }
