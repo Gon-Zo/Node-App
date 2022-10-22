@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { Get, JsonController } from "routing-controllers";
 import { UserService } from "../service/UserService";
 
-@JsonController("/user")
+@JsonController("/users")
 export class UserResource {
 
     constructor(private userService: UserService) {
