@@ -16,4 +16,12 @@ export class StartDTO {
     get content(): string {
         return this._content
     }
+
+    set name(name: string) {
+        this._name = name
+    }
+
+    set content(content: string) {
+        this._content = content
+    }
 }
